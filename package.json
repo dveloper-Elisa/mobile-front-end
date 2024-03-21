@@ -13,6 +13,7 @@
     "expo": "^50.0.11",
     "expo-cli": "^6.3.10",
     "expo-status-bar": "~1.11.1",
+    "gitignore": "^0.7.0",
     "react": "18.2.0",
     "react-native": "0.73.4",
     "twrnc": "^4.1.0"

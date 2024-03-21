@@ -2,7 +2,7 @@ import { TextInput, View, Text } from "react-native"
 import ButtonComponent from "./batton"
 import { useState } from "react"
 import tw from "twrnc"
-// import axios from "axios"
+import API_KEY_HOST from "../comfing/app.js"
 
 export default Home=()=>{
 
@@ -13,8 +13,8 @@ export default Home=()=>{
 
     const handleLogin = async()=>{
          try{
-            const url = "http://192.168.43.118:3000/security/login"
-
+            const url = `${API_KEY_HOST}/security/login`
+            // const url ="http://10.7.41.85:3000/security/login"
             const login = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -25,6 +25,7 @@ export default Home=()=>{
 
             if(login.ok){
                 const logedSecurity = await login.json()
+                console.log(logedSecurity)
                 return setData(logedSecurity.message)
             }
 
