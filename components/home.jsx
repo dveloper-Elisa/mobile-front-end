@@ -1,22 +1,22 @@
 import { TextInput, View, Text } from "react-native"
 import ButtonComponent from "./batton"
 import { useState } from "react"
+import { useNavigation } from "@react-navigation/native"
 import tw from "twrnc"
 
 
 import API_KEY_HOST from "../comfing/app.js"
 
 export default Home=()=>{
+    const navigation = useNavigation()
 
     const [Sname,setUserName] = useState("")
     const [password,setPassword] = useState("")
-
     const [data, setData] = useState("")
 
     const handleLogin = async()=>{
          try{
             const url = `${API_KEY_HOST}/security/login`
-            // const url ="http://192.168.43.118:3000/security/login"
             const login = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -60,6 +60,7 @@ return (
                 <ButtonComponent text={"Login"} onPress={()=>{
                     handleLogin()
                 }}/>
+                {/* <ButtonComponent /> */}
             </View>
         </View>
     </ View>
