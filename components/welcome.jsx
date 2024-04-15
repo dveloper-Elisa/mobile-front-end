@@ -12,7 +12,7 @@ export default Dashboard = () => {
     ["Umuhoza Josiane", "22RP00456", "0787647190"],
   ];
   return (
-    <View style={tw`flex-col gap-3 justify-center mt-10 gap-10`}>
+    <View style={tw`flex-col gap-3 justify-center gap-10`}>
       <View style={tw`items-center bg-slate-500 justify-center`}>
         <Text style={tw`text-6 capitalize font-semibold`}>
           welcome to Security DashBoard

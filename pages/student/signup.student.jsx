@@ -1,45 +1,148 @@
-
 import React from "react";
-// import { Formik } from "formik";
-import { SafeAreaView, View, Text, TextInput, Button } from "react-native";
-import tw from "twrnc"
+
+import { Formik } from "formik";
+import * as yup from "yup";
+
+import { SafeAreaView, View, Text, TextInput, Button,TouchableOpacity } from "react-native";
+import tw from "twrnc";
+import { useNavigation } from "@react-navigation/native";
+
+export default SignupSecurity = () => {
+
+    const navigation = useNavigation()
 
 
-export default SignupSecurity = ()=>{
+  const validationSchema = yup.object().shape({
+    name: yup.string().required("Name is require"),
+    email: yup.string().email("Enter valid email").required("Email required"),
+    nid: yup.string().required("ID is required").min(16),
+    telephone: yup.string().required("Phone number required"),
+    password: yup.string().min(8).required("Password required"),
+    regNumber: yup.string().min(7).required("Reg number is required"),
+  });
 
-    return (
-        <SafeAreaView>
-            <View>
-                <Text style={tw`text-[20px]`}>
-                    Welcome to security SignUp
-                </Text>
+  // HANDLING SUBMIT
+  const handleSubmit = (values) => {
+    console.log("Form values are", values);
+  };
 
-                {/* <Formik 
-                initialValues={{name:"",email:"",nid:"", telephone:"", password:"",regNumber:""}}>
-{({values, handleChange, errors,setFieldTouched, touched, isValid,handleSubmit})=>( */}
-    <View>
-        <TextInput
-        value={values.name}
-        onChange={handleChange("name")}
-        onBlur={()=>setFieldTouched("name")}
-        placeholder="Name here"
-        />
+  return (
+    <SafeAreaView style={tw`gap-5 mt-5`}>
+        <Text style={tw`text-6 font-bold text-white bg-slate-500 text-center p-5`}>Welcome to student SignUp</Text>
+      <View style={tw`mx-4`}>
 
-        {touched.name && errors.name && <Text style={tw`text-red-400`}>{errors.name}</Text>}
+        <Formik
+          initialValues={{
+            name: "",
+            email: "",
+            nid: "",
+            telephone: "",
+            password: "",
+            regNumber: "",
+          }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({
+            values,
+            handleChange,
+            errors,
+            setFieldTouched,
+            touched,
+            isValid,
+            handleSubmit,
+          }) => (
+            <View style={tw`flex gap-4`}>
+              <TextInput
+                style={tw`border p-2 text-5 font-sans rounded-lg`}
+                value={values.name}
+                onChange={handleChange("name")}
+                onBlur={() => setFieldTouched("name")}
+                placeholder="Name here"
+              />
 
+              {touched.name && errors.name && (
+                <Text style={tw`text-red-400`}>{errors.name}</Text>
+              )}
 
-        <Button 
-        title="SignUp"
-        disabled={!isValid}
-        onPress={
-            handleSubmit()
-        }
-        />
+              <TextInput
+                style={tw`border p-2 text-5 rounded-lg`}
+                value={values.email}
+                onChange={handleChange("email")}
+                onBlur={() => setFieldTouched("email")}
+                placeholder="Enter your email"
+              />
+              {touched.email && errors.email && (
+                <Text style={tw`text-red-400`}>{errors.email}</Text>
+              )}
 
-    </View>
-{/* )} */}
-                {/* </Formik> */}
+              <TextInput
+                style={tw`border p-2 text-5 rounded-lg`}
+                value={values.nid}
+                onChange={handleChange("nid")}
+                onBlur={() => setFieldTouched("nid")}
+                placeholder="Enter your ID"
+              />
+              {touched.nid && errors.nid && (
+                <Text style={tw`text-red-400`}>{errors.nid}</Text>
+              )}
+
+              <TextInput
+                style={tw`border p-2 text-5 rounded-lg`}
+                value={values.telephone}
+                onChange={handleChange("telephone")}
+                onBlur={() => setFieldTouched("telephone")}
+                placeholder="Enter your telephone"
+              />
+              {touched.telephone && errors.telephone && (
+                <Text style={tw`text-red-400`}>{errors.telephone}</Text>
+              )}
+
+              <TextInput
+                style={tw`border p-2 text-5 rounded-lg`}
+                value={values.password}
+                onChange={handleChange("password")}
+                onBlur={() => setFieldTouched("password")}
+                placeholder="Enter your password"
+              />
+              {touched.password && errors.password && (
+                <Text style={tw`text-red-400`}>{errors.password}</Text>
+              )}
+
+              <TextInput
+                style={tw`border p-2 text-5 rounded-lg`}
+                value={values.regNumber}
+                onChange={handleChange("regNumber")}
+                onBlur={() => setFieldTouched("regNumber")}
+                placeholder="Enter your regNumber"
+              />
+              {touched.regNumber && errors.regNumber && (
+                <Text style={tw`text-red-400`}>{errors.regNumber}</Text>
+              )}
+
+              <Button
+                title="SignUp"
+                disabled={!isValid}
+                onPress={handleSubmit}
+              />
             </View>
-        </SafeAreaView>
-    )
-}
+          )}
+        </Formik>
+
+        {/*MAKING FOOTER OF THE LOGIN  */}
+
+        <TouchableOpacity>
+            <Text style={tw`text-4`}>
+              If have account login
+              <Text
+                style={tw`text-blue-500 hover:bg-red-400 hover:text-white`}
+                onPress={() => navigation.navigate("Home")}
+              >
+                here
+              </Text>
+            </Text>
+          </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+};
