@@ -4,6 +4,8 @@ import { useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import tw from "twrnc"
 
+import Icon from "react-native-vector-icons/FontAwesome5"
+
 
 import API_KEY_HOST from "../comfing/app.js"
 
@@ -38,7 +40,15 @@ export default Home=()=>{
     }
 
 return (
-    <View style={tw`flex`}>
+    <View style={tw`flex mx-4`}>
+
+        <View style={tw`items-center `}>
+<View  style={tw`items-center p-10 opacity-50 bg-slate-400 w-fit rounded-50`}>
+
+            <Icon name="lock" size={100}/>
+</View>
+        </View>
+
 
         <Text style={tw`text-red-400`}>{data}</Text>
 
