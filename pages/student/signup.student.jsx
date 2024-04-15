@@ -15,9 +15,9 @@ export default SignupSecurity = () => {
   const validationSchema = yup.object().shape({
     name: yup.string().required("Name is require"),
     email: yup.string().email("Enter valid email").required("Email required"),
-    nid: yup.string().required("ID is required").min(16),
+    nid: yup.string().required("ID is required").min(16,"ID must have 16 values"),
     telephone: yup.string().required("Phone number required"),
-    password: yup.string().min(8).required("Password required"),
+    password: yup.string().min(8,"Password must contain atleast 8 characters").required("Password required"),
     regNumber: yup.string().min(7).required("Reg number is required"),
   });
 
@@ -52,11 +52,11 @@ export default SignupSecurity = () => {
             isValid,
             handleSubmit,
           }) => (
-            <View style={tw`flex gap-4`}>
+            <View style={tw`flex gap-2`}>
               <TextInput
                 style={tw`border p-2 text-5 font-sans rounded-lg`}
                 value={values.name}
-                onChange={handleChange("name")}
+                onChangeText={handleChange("name")}
                 onBlur={() => setFieldTouched("name")}
                 placeholder="Name here"
               />
@@ -68,7 +68,7 @@ export default SignupSecurity = () => {
               <TextInput
                 style={tw`border p-2 text-5 rounded-lg`}
                 value={values.email}
-                onChange={handleChange("email")}
+                onChangeText={handleChange("email")}
                 onBlur={() => setFieldTouched("email")}
                 placeholder="Enter your email"
               />
@@ -79,7 +79,7 @@ export default SignupSecurity = () => {
               <TextInput
                 style={tw`border p-2 text-5 rounded-lg`}
                 value={values.nid}
-                onChange={handleChange("nid")}
+                onChangeText={handleChange("nid")}
                 onBlur={() => setFieldTouched("nid")}
                 placeholder="Enter your ID"
               />
@@ -90,7 +90,7 @@ export default SignupSecurity = () => {
               <TextInput
                 style={tw`border p-2 text-5 rounded-lg`}
                 value={values.telephone}
-                onChange={handleChange("telephone")}
+                onChangeText={handleChange("telephone")}
                 onBlur={() => setFieldTouched("telephone")}
                 placeholder="Enter your telephone"
               />
@@ -101,7 +101,7 @@ export default SignupSecurity = () => {
               <TextInput
                 style={tw`border p-2 text-5 rounded-lg`}
                 value={values.password}
-                onChange={handleChange("password")}
+                onChangeText={handleChange("password")}
                 onBlur={() => setFieldTouched("password")}
                 placeholder="Enter your password"
               />
@@ -112,7 +112,7 @@ export default SignupSecurity = () => {
               <TextInput
                 style={tw`border p-2 text-5 rounded-lg`}
                 value={values.regNumber}
-                onChange={handleChange("regNumber")}
+                onChangeText={handleChange("regNumber")}
                 onBlur={() => setFieldTouched("regNumber")}
                 placeholder="Enter your regNumber"
               />
