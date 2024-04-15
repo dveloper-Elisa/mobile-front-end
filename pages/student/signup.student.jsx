@@ -1,11 +1,11 @@
 
 import React from "react";
-import { Formik } from "formik";
+// import { Formik } from "formik";
 import { SafeAreaView, View, Text, TextInput, Button } from "react-native";
 import tw from "twrnc"
 
 
- const SignupSecurity = ()=>{
+export default SignupSecurity = ()=>{
 
     return (
         <SafeAreaView>
@@ -14,9 +14,9 @@ import tw from "twrnc"
                     Welcome to security SignUp
                 </Text>
 
-                <Formik 
+                {/* <Formik 
                 initialValues={{name:"",email:"",nid:"", telephone:"", password:"",regNumber:""}}>
-{({values, handleChange, errors,setFieldTouched, touched, isValid,handleSubmit})=>(
+{({values, handleChange, errors,setFieldTouched, touched, isValid,handleSubmit})=>( */}
     <View>
         <TextInput
         value={values.name}
@@ -31,16 +31,15 @@ import tw from "twrnc"
         <Button 
         title="SignUp"
         disabled={!isValid}
-        onPress={handleSubmit}
+        onPress={
+            handleSubmit()
+        }
         />
 
     </View>
 )}
-                </Formik>
+                {/* </Formik> */}
             </View>
         </SafeAreaView>
     )
 }
-
-
-export default SignupSecurity

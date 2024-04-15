@@ -59,6 +59,7 @@ return (
             <View>
                 <ButtonComponent text={"Login"} onPress={()=>{
                     handleLogin()
+                    // navigation.navigate("Create Accout")
                 }}/>
                 {/* <ButtonComponent /> */}
             </View>
