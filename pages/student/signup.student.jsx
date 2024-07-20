@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { SafeAreaView, View, Text, TextInput, Button,TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
+import API_KEY_HOST from"../../comfing/app.js"
 
 export default SignupSecurity = () => {
 
@@ -22,8 +23,20 @@ export default SignupSecurity = () => {
   });
 
   // HANDLING SUBMIT
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     console.log("Form values are", values);
+    try{
+      const register = await fetch(`${API_KEY_HOST}/student-signup`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(values)})
+
+      if(register.ok){
+        const insert = await register.json();
+        console.log(insert.message);
+      }else{
+        console.log("Data not inserted into database!!!!")
+      }
+    }catch(error){
+      console.log("Error is :",error)
+    }
   };
 
   return (
