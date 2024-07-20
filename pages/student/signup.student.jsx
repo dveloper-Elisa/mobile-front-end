@@ -2,6 +2,7 @@ import React from "react";
 
 import { Formik } from "formik";
 import * as yup from "yup";
+import { Alert } from "react-native";
 
 import { SafeAreaView, View, Text, TextInput, Button,TouchableOpacity } from "react-native";
 import tw from "twrnc";
@@ -30,9 +31,12 @@ export default SignupSecurity = () => {
 
       if(register.ok){
         const insert = await register.json();
-        console.log(insert.message);
+        Alert.alert("Register",insert.message)
+        navigation.navigate("Dashboard");
+        // console.log(insert.message);
       }else{
-        console.log("Data not inserted into database!!!!")
+        console.log()
+        Alert.alert("Error","Student not Registered!!")
       }
     }catch(error){
       console.log("Error is :",error)
