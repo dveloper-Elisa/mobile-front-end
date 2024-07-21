@@ -1,10 +1,20 @@
 import { Button, Text } from "react-native";
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Table, Row, Rows } from "react-native-table-component";
 import tw from "twrnc";
 
 export default Dashboard = () => {
+
+  const navigation = useNavigation()
+
+  function popCamera(){
+    return navigation.navigate("Check-camera")
+
+  }
+
+
   const tableData = [
     ["Names", "Reg Number", "Telephone"],
     ["Kwizera Elisa", "22RP00159", "0787647168"],
@@ -22,7 +32,7 @@ export default Dashboard = () => {
         <View style={tw`flex gap-20`}>
           <View style={tw` flex-row justify-between gap-30`}>
             <View>
-              <Button title="View Checked" />
+              <Button title="Check in" onPress={popCamera}/>
             </View>
 
             <View>

@@ -8,6 +8,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import SignupSecurity from "./pages/student/signup.student.jsx";
 import Dashboard from "./components/welcome.jsx";
+import Signup from "./pages/security/signup.security.jsx";
 import tw from "twrnc";
 
 const  Stack = createNativeStackNavigator()
@@ -22,6 +23,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} style={tw`flex items-center justify-center`}/>
         <Stack.Screen name="Dashboard" component={Dashboard}/>
         <Stack.Screen name="Create Accout" component={SignupSecurity}/>
+        <Stack.Screen name="Check-camera" component={Signup}/>
       </Stack.Navigator>
 
     </NavigationContainer>

@@ -3,7 +3,7 @@ import { View, Text, Button, Image, StyleSheet, Alert } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import * as FaceDetector from "expo-face-detector";
 import { Camera } from "expo-camera";
-import API_KEY_HOST from "../../config/hostLink.js";
+import API_KEY_HOST from "../../comfing/app.js";
 
 export default function Signup() {
   const [image, setImage] = useState(null);
@@ -28,8 +28,8 @@ export default function Signup() {
       cameraType: ImagePicker.CameraType.front,
       quality: 1,
     });
-
     console.log("Image picker result:", result);
+    Alert.alert("Image picker result:", JSON.stringify(result));
 
     if (!result.canceled && result.uri) {
       setImage(result.uri);
